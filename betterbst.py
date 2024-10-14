@@ -48,7 +48,7 @@ class BetterBST(BinarySearchTree[K, I]):
             Best Case Complexity: TODO
             Worst Case Complexity: TODO
         """
-        raise NotImplementedError
+        return sorted(elements,key=lambda x:x[0])
 
     def __build_balanced_tree(self, elements: List[Tuple[K, I]]) -> None:
         """
@@ -74,4 +74,18 @@ class BetterBST(BinarySearchTree[K, I]):
             Worst Case Complexity: O(n * log(n))
             where n is the number of elements in the list.
         """
-        raise NotImplementedError
+        if not elements:
+            return
+        
+        mid=len(elements)//2
+        key,items=elements[mid]
+        self.insert_aux(key,items)
+
+        self.__build_balanced_tree(elements[:mid])#left sub tree
+        self.__build_balanced_tree(elements[mid+1:])# right subtree
+
+
+
+
+elements=[(1,1),(9,9),(4,4),(11,11),(2,2),(7,7),(8,8)]
+BetterBST(elements).draw()
