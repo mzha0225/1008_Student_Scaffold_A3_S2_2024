@@ -79,7 +79,7 @@ class BetterBST(BinarySearchTree[K, I]):
         
         mid=len(elements)//2
         key,items=elements[mid]
-        self.insert_aux(key,items)
+        self[key]=items
 
         self.__build_balanced_tree(elements[:mid])#left sub tree
         self.__build_balanced_tree(elements[mid+1:])# right subtree
